@@ -44,16 +44,17 @@ They all expose the global `window.antiglobal` function.
 ```html
 <script src='js/antiglobal.js'></script>
 
-<script src='js/foo.js'></script>  // Creates window.FOO.
+<script src='js/foo.js'></script>  // Creates window.FOO
 
 <script>
-    antiglobal('FOO');  // OK, returns true.
+    antiglobal('FOO');  // OK, returns true
 </script>
 
-<script src='js/bar.js'></script>  // Creates window.BAR.
+<script src='js/bar.js'></script>  // Creates window.BAR
 
 <script>
-    antiglobal('QWE');  // ERROR: given globals do not match real new globals [given: QWE | real: BAR]
+    antiglobal('QWE');  // ERROR: given globals do not match real new globals
+                        // [given: QWE | real: BAR]
 </script>
 ```
 
