@@ -7,6 +7,8 @@ Node/browser library to detect global/window namespace pollution.
 
 * With **npm**:
 
+[![NPM](https://nodei.co/npm/antiglobal.png)](https://nodei.co/npm/antiglobal/)
+
 ```bash
 $ npm install antiglobal
 ```
