@@ -1,0 +1,26 @@
+{
+  "name": "antiglobal",
+  "version": "0.1.0",
+  "description": "Node/browser library to detect global/window namespace pollution",
+  "main": "dist/antiglobal.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibc/antiglobal.git"
+  },
+  "author": "Iñaki Baz Castillo <ibc@aliax.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibc/antiglobal/issues"
+  },
+  "homepage": "https://github.com/ibc/antiglobal",
+  "ignore": [
+    "node_modules",
+    "test",
+    "index.js",
+    "gulpfile.js",
+    "package.json",
+    ".jshintrc",
+    ".gitignore",
+    ".git"
+  ]
+}
