@@ -1,6 +1,6 @@
 {
   "name": "antiglobal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Node/browser library to detect global/window namespace pollution",
   "main": "dist/antiglobal.js",
   "repository": {

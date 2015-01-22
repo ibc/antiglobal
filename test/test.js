@@ -40,5 +40,14 @@ module.exports = {
 	'final call without global addition': function(test) {
 		test.ok(antiglobal());
 		test.done();
+	},
+
+	'antiglobal.reset() works': function(test) {
+		global.FFF = 'fff';
+
+		antiglobal.reset();
+
+		test.ok(antiglobal());
+		test.done();
 	}
 };

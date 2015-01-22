@@ -60,6 +60,14 @@ function antiglobal() {
 
 
 /**
+ * Reset current globals.
+ */
+antiglobal.reset = function() {
+	lastGlobals = getGlobals();
+};
+
+
+/**
  * Public properties.
  */
 Object.defineProperties(antiglobal, {

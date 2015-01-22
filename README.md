@@ -69,6 +69,11 @@ Returns `true` if given arguments match the new elements in the global/window na
 It updates the list of elements in the global/window namespace for the next execution.
 
 
+#### `antiglobal.reset()` function
+
+Reset the list of elements in the global/window namespace. Useful to ignore globals introduced by a library while still allowing `antiglobal()` to check other libraries loaded after that.
+
+
 #### `antiglobal.log` read/write property
 
 If set to `true`, errors when calling `antiglobal()` are logged to `console.error`.
