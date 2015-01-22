@@ -85,7 +85,10 @@ function getGlobals() {
 
 	for (var key in global) {
 		if (global.hasOwnProperty(key)) {
-			globals.push(key);
+			// Ignore this module.
+			if (key !== 'antiglobal') {
+				globals.push(key);
+			}
 		}
 	}
 
