@@ -5,7 +5,6 @@ antiglobal.log = false;
 module.exports = {
 	'call without global additions': function(test) {
 		test.ok(antiglobal());
-
 		test.done();
 	},
 
@@ -13,7 +12,6 @@ module.exports = {
 		global.AAA = 'aaa';
 
 		test.ok(antiglobal('AAA'));
-
 		test.done();
 	},
 
@@ -22,7 +20,14 @@ module.exports = {
 		global.CCC = 'ccc';
 
 		test.ok(antiglobal('BBB', 'CCC'));
+		test.done();
+	},
 
+	'TODO: should fail coño': function(test) {
+		console.log(global.AAA);
+		delete global.AAA;
+
+		test.ok(antiglobal());
 		test.done();
 	},
 
@@ -42,7 +47,6 @@ module.exports = {
 
 	'final call without global addition': function(test) {
 		test.ok(antiglobal());
-
 		test.done();
 	}
 };
