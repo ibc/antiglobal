@@ -41,7 +41,7 @@ They all expose the global `window.antiglobal` function.
 
 ## Usage Example
 
-```javascript
+```html
 <script src='js/antiglobal.js'></script>
 
 <script src='js/foo.js'></script>  // Creates window.FOO.
