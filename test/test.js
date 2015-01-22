@@ -23,14 +23,6 @@ module.exports = {
 		test.done();
 	},
 
-	'TODO: should fail coño': function(test) {
-		console.log(global.AAA);
-		delete global.AAA;
-
-		test.ok(antiglobal());
-		test.done();
-	},
-
 	'antiglobal.throw=true works': function(test) {
 		antiglobal.throw = true;
 
