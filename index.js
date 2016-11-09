@@ -34,7 +34,7 @@ function antiglobal()
 	}
 
 	// Update lastGlobals
-	lastGlobals = globals;
+	lastGlobals = globals.concat(givenGlobals);
 
 	if (changed)
 	{

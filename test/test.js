@@ -2,20 +2,24 @@ var antiglobal = require('../');
 
 antiglobal.log = false;
 
-module.exports = {
-	'call without global additions': function(test) {
+module.exports =
+{
+	'call without global additions': function(test)
+	{
 		test.ok(antiglobal());
 		test.done();
 	},
 
-	'call after a global addition': function(test) {
+	'call after a global addition': function(test)
+	{
 		global.AAA = 'aaa';
 
 		test.ok(antiglobal('AAA'));
 		test.done();
 	},
 
-	'call after two global additions': function(test) {
+	'call after two global additions': function(test)
+	{
 		global.BBB = 'bbb';
 		global.CCC = 'ccc';
 
@@ -23,13 +27,15 @@ module.exports = {
 		test.done();
 	},
 
-	'antiglobal.throw=true works': function(test) {
+	'antiglobal.throw=true works': function(test)
+	{
 		antiglobal.throw = true;
 
 		global.DDD = 'ddd';
 		global.EEE = 'eee';
 
-		test.throws(function() {
+		test.throws(function()
+		{
 			antiglobal('DDD');
 		}, Error);
 
@@ -37,12 +43,14 @@ module.exports = {
 		test.done();
 	},
 
-	'final call without global addition': function(test) {
+	'final call without global addition': function(test)
+	{
 		test.ok(antiglobal());
 		test.done();
 	},
 
-	'antiglobal.reset() works': function(test) {
+	'antiglobal.reset() works': function(test)
+	{
 		global.FFF = 'fff';
 
 		antiglobal.reset();
