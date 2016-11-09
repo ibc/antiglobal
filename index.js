@@ -1,102 +1,110 @@
-/**
- * Expose the antiglobal function.
- */
-module.exports = antiglobal;
-
-
-/**
- * Local variables.
- */
 var lastGlobals = getGlobals();
 var doLog = true;
 var doThrow = false;
 
+function antiglobal()
+{
+	var globals = getGlobals(); // Get current globals
+	var givenGlobals = Array.prototype.slice.call(arguments);
+	var newGlobals = [];
+	var removedGlobals = [];
+	var changed = false;
+	var i, len, elem;
 
-function antiglobal() {
-	var givenDiff = Array.prototype.slice.call(arguments),
-		realDiff = [],
-		ret = false,
-		globals, i, len, elem, msg;
-
-	// Get current globals;
-	globals = getGlobals();
-
-	// Create current diff.
-	for (i=0, len=globals.length; i<len; i++) {
+	for (i=0, len=globals.length; i<len; i++)
+	{
 		elem = globals[i];
 
-		if (lastGlobals.indexOf(elem) === -1) {
-			realDiff.push(elem);
+		if (lastGlobals.indexOf(elem) === -1 && givenGlobals.indexOf(elem) === -1)
+		{
+			newGlobals.push(elem);
+			changed = true;
 		}
 	}
 
-	// Compare diffs.
-	if (givenDiff.length === realDiff.length) {
-		ret = true;
+	for (i=0, len=lastGlobals.length; i<len; i++)
+	{
+		elem = lastGlobals[i];
 
-		for (i=0, len=givenDiff.length; i<len; i++) {
-			elem = givenDiff[i];
-
-			if (realDiff.indexOf(elem) === -1) {
-				ret = false;
-				break;
-			}
+		if (globals.indexOf(elem) === -1)
+		{
+			removedGlobals.push(elem);
+			changed = true;
 		}
 	}
 
-	// Update lastGlobals.
+	// Update lastGlobals
 	lastGlobals = globals;
 
-	if (!ret) {
-		msg = 'antiglobal() | ERROR: given globals do not match real new globals [given: ' + givenDiff + ' | real: ' + realDiff + ']';
-		if (doLog)   { console.error(msg);   }
-		if (doThrow) { throw new Error(msg); }
+	if (changed)
+	{
+		var msg = 'antiglobal() | globals do not match:';
+
+		for (i=0, len=newGlobals.length; i<len; i++)
+		{
+			elem = newGlobals[i];
+			msg = msg + '\n+ ' + elem;
+		}
+
+		for (i=0, len=removedGlobals.length; i<len; i++)
+		{
+			elem = removedGlobals[i];
+			msg = msg + '\n- ' + elem;
+		}
+
+		if (doLog)
+			console.error(msg);
+		if (doThrow)
+			throw new Error(msg);
 	}
 
-	return ret;
+	return !changed;
 }
 
-
 /**
- * Reset current globals.
+ * Reset current globals
  */
-antiglobal.reset = function() {
+antiglobal.reset = function()
+{
 	lastGlobals = getGlobals();
 };
 
-
 /**
- * Public properties.
+ * Public properties
  */
-Object.defineProperties(antiglobal, {
-	log: {
-		get: function() { return doLog; },
+Object.defineProperties(antiglobal,
+{
+	log:
+	{
+		get: function()     { return doLog;          },
 		set: function(bool) { doLog = Boolean(bool); }
 	},
-
-	throw: {
-		get: function() { return doThrow; },
+	throw:
+	{
+		get: function()     { return doThrow;          },
 		set: function(bool) { doThrow = Boolean(bool); }
 	}
 });
 
-
 /**
- * Private API.
+ * Private API
  */
 
-
-function getGlobals() {
+function getGlobals()
+{
 	var globals = [];
 
-	for (var key in global) {
-		if (global.hasOwnProperty(key)) {
-			// Ignore this module.
-			if (key !== 'antiglobal') {
+	for (var key in global)
+	{
+		if (global.hasOwnProperty(key))
+		{
+			// Ignore this module
+			if (key !== 'antiglobal')
 				globals.push(key);
-			}
 		}
 	}
 
 	return globals;
 }
+
+module.exports = antiglobal;

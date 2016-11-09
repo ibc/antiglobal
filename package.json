@@ -1,6 +1,6 @@
 {
   "name": "antiglobal",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Node/browser library to detect global/window namespace pollution",
   "main": "index.js",
   "repository": {
@@ -14,14 +14,15 @@
   },
   "homepage": "https://github.com/ibc/antiglobal",
   "devDependencies": {
-    "browserify": "^8.1.1",
+    "browserify": "^13.1.1",
     "gulp": "git+https://github.com/gulpjs/gulp.git#4.0",
     "gulp-jshint": "^1.9.0",
     "gulp-nodeunit-runner": "^0.2.2",
     "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.1.0",
+    "gulp-uglify": "^2.0.0",
     "jshint-stylish": "^1.0.0",
-    "vinyl-transform": "^1.0.0"
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "test": "gulp test"
